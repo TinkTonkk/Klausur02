@@ -10,7 +10,12 @@ cursor = connect.cursor()
 # for Datum, Temperatur in Testdaten:
 #     cursor.execute("INSERT INTO Temperaturen(Datum, Temperatur) VALUES (?, ?)", (Datum, Temperatur))
 
+befehl2 =cursor.execute("SELECT MAX(Temperatur) FROM Temperaturen WHERE Datum LIKE '%24'")
+
+print(cursor.fetchall())
+
 befehl = cursor.execute("SELECT MIN(Temperatur), MAX(Temperatur), AVG(Temperatur) FROM Temperaturen")
+
 print(cursor.fetchall())
 
 connect.commit()
